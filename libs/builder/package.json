@@ -1,0 +1,15 @@
+{
+  "name": "@camp/builder",
+  "version": "1.0.0",
+  "description": "Transport-agnostic chainable builder for requests",
+  "author": {
+    "name": "KageNoNeko",
+    "web": "https://github.com/KageNoNeko"
+  },
+  "keywords": [
+    "http",
+    "request",
+    "builder",
+    "build"
+  ]
+}

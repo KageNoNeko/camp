@@ -1,6 +1,38 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "builder": {
+      "root": "libs/builder",
+      "sourceRoot": "libs/builder/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/builder",
+            "main": "libs/builder/src/index.ts",
+            "tsConfig": "libs/builder/tsconfig.lib.json",
+            "assets": ["libs/builder/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/builder/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/builder"],
+          "options": {
+            "jestConfig": "libs/builder/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   }
