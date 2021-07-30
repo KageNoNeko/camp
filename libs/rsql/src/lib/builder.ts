@@ -78,12 +78,15 @@ export class Builder<CO extends ComparisonOperator = ComparisonOperator> {
         return this.fromLongNotation(...notation, logic);
     }
 
+    // @todo improve selector type
     where(selector: string, operator: CO, value: Value): this;
     where(selector: string, value: Value): this;
     where(map: ValueMap): this;
     where(scope: Scope<Builder<CO>>): this;
     where(...notation: AnyNotation): this {
-        return this.from(notation, AND);
+        this.from(notation, AND);
+
+        return this;
     }
 
     and(selector: string, operator: CO, value: Value): this;
@@ -91,7 +94,9 @@ export class Builder<CO extends ComparisonOperator = ComparisonOperator> {
     and(map: ValueMap): this;
     and(scope: Scope<Builder<CO>>): this;
     and(...notation: AnyNotation): this {
-        return this.from(notation, AND);
+        this.from(notation, AND);
+
+        return this;
     }
 
     or(selector: string, operator: CO, value: Value): this;
@@ -99,7 +104,9 @@ export class Builder<CO extends ComparisonOperator = ComparisonOperator> {
     or(map: ValueMap): this;
     or(scope: Scope<Builder<CO>>): this;
     or(...notation: AnyNotation): this {
-        return this.from(notation, OR);
+        this.from(notation, OR);
+
+        return this;
     }
 
     toString(): string {
