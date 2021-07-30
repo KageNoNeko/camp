@@ -7,5 +7,5 @@
 
 | Package                            | Description                                       |
 | ---------------------------------- | ------------------------------------------------- |
-| [`@camp/builder`](https://github.com/KageNoNeko/camp/blob/master/libs/builder/README.md) | Transport-agnostic chainable builder for requests |
-| [`@camp/rsql`](https://github.com/KageNoNeko/camp/blob/master/libs/rsql/README.md)       | Chainable builder for RSQL                        |
+| [`@camp/builder`](https://github.com/KageNoNeko/camp/blob/master/libs/builder) | Transport-agnostic chainable builder for requests |
+| [`@camp/rsql`](https://github.com/KageNoNeko/camp/blob/master/libs/rsql)       | Chainable builder for RSQL                        |
