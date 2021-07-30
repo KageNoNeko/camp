@@ -1,0 +1,17 @@
+{
+  "name": "@camp/rsql",
+  "version": "0.0.1",
+  "description": "Chainable builder for RSQL",
+  "author": {
+    "name": "KageNoNeko",
+    "web": "https://github.com/KageNoNeko"
+  },
+  "keywords": [
+    "http",
+    "rsql",
+    "builder",
+    "build",
+    "query",
+    "querybuilder"
+  ]
+}

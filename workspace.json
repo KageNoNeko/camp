@@ -31,6 +31,37 @@
           }
         }
       }
+    },
+    "rsql": {
+      "root": "libs/rsql",
+      "sourceRoot": "libs/rsql/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/rsql",
+            "main": "libs/rsql/src/index.ts",
+            "tsConfig": "libs/rsql/tsconfig.lib.json",
+            "assets": ["libs/rsql/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/rsql/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/rsql"],
+          "options": {
+            "jestConfig": "libs/rsql/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

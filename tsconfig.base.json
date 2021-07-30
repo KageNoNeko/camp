@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@camp/builder": ["libs/builder/src/index.ts"]
+      "@camp/builder": ["libs/builder/src/index.ts"],
+      "@camp/rsql": ["libs/rsql/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

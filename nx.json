@@ -29,6 +29,9 @@
   "projects": {
     "builder": {
       "tags": []
+    },
+    "rsql": {
+      "tags": []
     }
   }
 }
