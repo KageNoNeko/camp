@@ -1,8 +1,8 @@
-import { AND, ComparisonOperator, EQ, ExpressionNode, LogicOperator, OR } from '@rsql/ast';
+import { AND, EQ, ExpressionNode, LogicOperator, OR } from '@rsql/ast';
 import builder from '@rsql/builder';
 import { emit } from '@rsql/emitter';
 import { AnyNotation } from './any-notation';
-import { BuilderApi } from './builder-api';
+import { ComparisonOperator } from './comparison-operator';
 import { isMapNotation } from './is-map-notation';
 import { isScopeNotation } from './is-scope-notation';
 import { isShortNotation } from './is-short-notation';
@@ -10,7 +10,7 @@ import { Scope } from './scope';
 import { Value } from './value';
 import { ValueMap } from './value-map';
 
-export class Builder implements BuilderApi {
+export class Builder<CO extends ComparisonOperator = ComparisonOperator> {
     protected node?: ExpressionNode;
 
     get expression(): ExpressionNode | undefined {
@@ -50,7 +50,7 @@ export class Builder implements BuilderApi {
         return this;
     }
 
-    protected fromScopeNotation(scope: Scope, operator: LogicOperator): this {
+    protected fromScopeNotation(scope: Scope<Builder>, operator: LogicOperator): this {
         const builder = new (this.constructor as typeof Builder)();
 
         scope(builder);
@@ -78,26 +78,26 @@ export class Builder implements BuilderApi {
         return this.fromLongNotation(...notation, logic);
     }
 
-    where(selector: string, operator: ComparisonOperator, value: Value): this;
+    where(selector: string, operator: CO, value: Value): this;
     where(selector: string, value: Value): this;
     where(map: ValueMap): this;
-    where(scope: Scope): this;
+    where(scope: Scope<Builder<CO>>): this;
     where(...notation: AnyNotation): this {
         return this.from(notation, AND);
     }
 
-    and(selector: string, operator: ComparisonOperator, value: Value): this;
+    and(selector: string, operator: CO, value: Value): this;
     and(selector: string, value: Value): this;
     and(map: ValueMap): this;
-    and(scope: Scope): this;
+    and(scope: Scope<Builder<CO>>): this;
     and(...notation: AnyNotation): this {
         return this.from(notation, AND);
     }
 
-    or(selector: string, operator: ComparisonOperator, value: Value): this;
+    or(selector: string, operator: CO, value: Value): this;
     or(selector: string, value: Value): this;
     or(map: ValueMap): this;
-    or(scope: Scope): this;
+    or(scope: Scope<Builder<CO>>): this;
     or(...notation: AnyNotation): this {
         return this.from(notation, OR);
     }
